@@ -1,4 +1,4 @@
 include:
   - media.hal
   - media.dropbox
-  - media.gnome
+  #- media.gnome
