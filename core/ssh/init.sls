@@ -1,11 +1,21 @@
-openssh:
+openssh-client:
   pkg.installed:
-    - name: {{ salt['pillar.get']('pkgs:openssh', 'openssh') }}
+    - name: openssh-client
 
+    
 sshguard:
   pkg.installed:
-    - name: {{ salt['pillar.get']('pkgs:sshguard', 'sshguard') }}
+    - name: sshguard
   service.running:
     - enable: True
     - require:
       - pkg: sshguard
+
+/etc/ssh/ssh_config:
+  file.managed:
+    - user: root
+    - group: root
+    - mode: 644
+    #- source: salt://ssh/ssh_config
+    - require:
+        - pkg: openssh-client
