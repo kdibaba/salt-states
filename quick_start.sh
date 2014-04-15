@@ -1,7 +1,8 @@
 sudo apt-get -y install git
-cd ..
+sudo apt-get -y install vim
+cd ~/
 git clone https://github.com/johnnygaffey/dotfiles.git
-cd dotfiles/
+cd ~/dotfiles/
 bash install.sh
 wget -O - http://bootstrap.saltstack.org | sudo sh
 cd ~/
