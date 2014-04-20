@@ -7,5 +7,5 @@ bash install.sh
 wget -O - http://bootstrap.saltstack.org | sudo sh
 cd ~/
 sudo ln -s /home/johnnyg/salt-states /srv/salt
-sudo vim /etc/salt/minion
-sudo salt-call state.highstate test=True
+#sudo vim /etc/salt/minion
+sudo salt-call --local state.highstate test=True
