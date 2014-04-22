@@ -4,7 +4,6 @@ include:
   - core.mplayer
   - core.ssh.server
   - core.vim
-  - core.byobu
 
 /etc/default/grub:
   file.replace:
