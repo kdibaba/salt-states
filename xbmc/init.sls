@@ -7,15 +7,13 @@ xbmc:
       - pkg: xbmc
 
 /home/johnnyg/.xbmc:
-  file.directory:
-    - user: johnnyg
-    - group: johnnyg
-    - mode: 755
   archive.extracted:
     - source: https://www.dropbox.com/sh/1jqd5sxtjve2zv1/f6jOF9A0Ab/userdata.tar.gz
-    - source_hash: https://www.dropbox.com/sh/1jqd5sxtjve2zv1/f6jOF9A0Ab/userdata.tar.gz/+md5
+    #- source_hash: https://www.dropbox.com/s/6l8pjo45rjl2kkw/userdata.tar.gz.md5 
+    - source_hash: md5=026449262d2101cfdd7614e00241118c
     - archive_format: tar
     - if_missing: /home/johnnyg/.xbmc/userdata
+    - tar_options: zxvf 
 
 /home/johhnyg/.xbmc/userdata:
   file.directroy:
