@@ -1,7 +1,6 @@
 rtorrent:
   pkg.installed:
     - name: rtorrent
-  service:
-    - running
-    - watch:
-      - file: ~/.rtorrent.rc
+  cmd:
+    - run
+    - name: screen -d -m -S rtorrent rtorrent
