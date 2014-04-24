@@ -4,5 +4,6 @@ base:
     #- users
     - desktop
     - media
-    - xbmc
     - torrent
+    - systemtools
+    - xbmc
