@@ -28,6 +28,12 @@ untar_userdata:
     - require:
       - module: unzip_tar
 
+remove_tar:
+  file.absent:
+    - name: /home/johnnyg/userdata.tar
+    - require:
+      - module: untar_userdata
+
 /home/johhnyg/.xbmc/userdata/:
   file.directory:
     - name: /home/johnnyg/.xbmc/userdata/
