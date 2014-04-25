@@ -1,10 +1,10 @@
 include:
+  - core.salt
   - core.aide
   - core.htop
   - core.mplayer
   - core.ssh.server
   - core.vim
-  - core.salt
 
 /etc/default/grub:
   file.replace:
