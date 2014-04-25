@@ -1,8 +1,9 @@
 base:
   '*':
     - core
-    #- users
+    - users
     - desktop
+    - devtools
     - media
     - torrent
     - systemtools

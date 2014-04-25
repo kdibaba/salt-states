@@ -19,7 +19,7 @@ systemtools:
       - {{ salt['pillar.get']('pkgs:lshw', 'lshw') }}
       - {{ salt['pillar.get']('pkgs:pciutils', 'pciutils') }}
       - {{ salt['pillar.get']('pkgs:usbutils', 'usbutils') }}
-      #- {{ salt['pillar.get']('pkgs:usermode-utilities', 'usermode-utilities') }}
+      - {{ salt['pillar.get']('pkgs:usermode-utilities', 'usermode-utilities') }}
       - {{ salt['pillar.get']('pkgs:bc', 'bc') }}
       - {{ salt['pillar.get']('pkgs:dfc', 'dfc') }}
       - {{ salt['pillar.get']('pkgs:lsscsi', 'lsscsi') }}
