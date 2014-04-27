@@ -13,37 +13,30 @@ create_xbmc_home:
     - group: {{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}
     - mode: 755
 
-ssh://git@bitbucket.org:SGTJohnny/xbmc_userdata.git:
+git@bitbucket.org:SGTJohnny/xbmc_userdata.git:
   git.latest:
     - rev: master
-    - target: /home/{{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}/dotfiles
+    - target: /home/{{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}/xbmc_userdata
     - user: {{ salt['pillar.get']('users:johnny:username', 'johnnyg') }} 
     - identity: /home/{{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}/.ssh/id_rsa
 
 unzip_tar:
   module.run:
     - name: archive.gunzip
-    - gzipfile: /home/{{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}/XBMC_userdata/userdata.tar.gz
+    - gzipfile: /home/{{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}/xbmc_userdata/userdata.tar.gz
     - require:
-      - git: https://bitbucket.org/SGTJohnny/xbmc_userdata
+      - file: user_data_exists
 
 untar_userdata:
   module.run:
     - name: archive.tar
     - options: xvf
-    - tarfile: /home/{{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}/userdata.tar
+    - tarfile: /home/{{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}/xbmc_userdata/userdata.tar
     - dest: /home/{{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}/.xbmc/
-    - require:
+    - watch:
       - module: unzip_tar
 
-
-remove_tar:
-  file.absent:
-    - name: /home/{{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}/userdata.tar
-    - require:
-      - module: untar_userdata
-
-/home/johhnyg/.xbmc/userdata/:
+manage_userdata_permissions:
   file.directory:
     - name: /home/{{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}/.xbmc/userdata/
     - user: {{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}
@@ -54,5 +47,9 @@ remove_tar:
       - user
       - group
       - mode
-    - require:
+    - watch:
       - module: untar_userdata
+
+user_data_exists:
+  file.exists:
+    - name: /home/{{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}/xbmc_userdata/userdata.tar.gz
