@@ -13,15 +13,12 @@ johnny:
     - createhome: True
     - password: {{ salt['pillar.get']('users:johnny:password', 'password') }}
 
-
-
-get_johnny_dots:
+https://github.com/johnnygaffey/dotfiles:
   git.latest:
-    - name: https://github.com/johnnygaffey/dotfiles
     - rev: master
     - target: /home/{{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}/dotfiles
     - user: {{ salt['pillar.get']('users:johnny:username', 'johnnyg') }} 
-    - always_fetch: True
+    - identity: /home/{{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}/.ssh/id_rsa
     - require:
       - user: {{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}
 
