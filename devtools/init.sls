@@ -20,7 +20,6 @@ python-tools:
       - {{ salt['pillar.get']('pkgs:flake8', 'flake8') }}
       - {{ salt['pillar.get']('pkgs:pep8', 'pep8') }}
       - {{ salt['pillar.get']('pkgs:virtualenv', 'virtualenv') }}
-      - {{ salt['pillar.get']('pkgs:jedi', 'jedi') }}
       - {{ salt['pillar.get']('pkgs:tox', 'tox') }}
       - {{ salt['pillar.get']('pkgs:pip', 'pip') }}
   pip.installed:
@@ -28,5 +27,6 @@ python-tools:
       - django
       - pylint
       - ipython
+      - jedi
     - require:
       - pkg: python-tools

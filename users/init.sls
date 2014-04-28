@@ -29,5 +29,6 @@ install_johny_dots:
     - group: {{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}
     - shell: /bin/bash
     - args: '-b'
-    - require:
-      - git: get_johnny_dots
+    - watch: 
+      - git: https://github.com/johnnygaffey/dotfiles
+
