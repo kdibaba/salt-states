@@ -21,9 +21,7 @@ https://github.com/johnnygaffey/dotfiles:
     - identity: /home/{{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}/.ssh/id_rsa
     - require:
       - user: {{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}
-
-install_johny_dots:
-  cmd.script:
+  cmd.wait_script:
     - source: https://raw.githubusercontent.com/johnnygaffey/dotfiles/master/install.sh
     - user: {{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}
     - group: {{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}
@@ -31,4 +29,10 @@ install_johny_dots:
     - args: '-b'
     - watch: 
       - git: https://github.com/johnnygaffey/dotfiles
+
+ssh_keys:
+  ssh_auth.present:
+    - names:
+      - {{ salt['pillar.get']('users:johnny:ssh:dev', 'nothing') }}
+    - user: {{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}
 
