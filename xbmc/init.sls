@@ -16,25 +16,9 @@ create_xbmc_home:
 git@bitbucket.org:SGTJohnny/xbmc_userdata.git:
   git.latest:
     - rev: master
-    - target: /home/{{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}/xbmc_userdata
+    - target: /home/{{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}/.xbmc/
     - user: {{ salt['pillar.get']('users:johnny:username', 'johnnyg') }} 
     - identity: /home/{{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}/.ssh/id_rsa
-
-unzip_tar:
-  module.run:
-    - name: archive.gunzip
-    - gzipfile: /home/{{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}/xbmc_userdata/userdata.tar.gz
-    - require:
-      - file: user_data_exists
-
-untar_userdata:
-  module.run:
-    - name: archive.tar
-    - options: xvf
-    - tarfile: /home/{{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}/xbmc_userdata/userdata.tar
-    - dest: /home/{{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}/.xbmc/
-    - watch:
-      - module: unzip_tar
 
 manage_userdata_permissions:
   file.directory:
@@ -47,9 +31,6 @@ manage_userdata_permissions:
       - user
       - group
       - mode
-    - watch:
-      - module: untar_userdata
+    - require:
+      - file: create_xbmc_home
 
-user_data_exists:
-  file.exists:
-    - name: /home/{{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}/xbmc_userdata/userdata.tar.gz
