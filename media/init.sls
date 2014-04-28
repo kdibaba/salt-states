@@ -3,3 +3,4 @@ include:
   - media.dropbox
   - media.ftp
   #- media.gnome
+  - media.solaar
