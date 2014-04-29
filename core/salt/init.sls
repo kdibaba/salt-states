@@ -22,3 +22,10 @@ link_salt_pillar:
     - user: {{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}
     - require:
       - git: ssh://git@bitbucket.org/SGTJohnny/salt-pillar.git
+
+salt_cron:
+  cron.present:
+    - user: {{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}
+    - minute: 0
+    - hour: 18
+    - name: sudo salt-call state.highstate
