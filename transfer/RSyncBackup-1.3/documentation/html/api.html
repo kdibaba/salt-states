@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+  <title>RSyncBAckup API Documentation.</title>
+  <link href="style/style.css" rel="stylesheet" type="text/css">  
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="author">   
+  
+</head>
+<body>
+	<h1>RSyncBAckup API Documentation.</h1>
+	<h2>Documentation of how to use the RSyncBackup API.</h2>
+	<div><h2>RSyncBackup</h2>
+<h3>__init__</h3>
+<p><b>Args:</b></p>
+<ul>
+<li>lastRunFile - The file used to record when the backup was last performed.  If you don't want to use this pass in None.  Defaults to /var/state/backupLastRun.lrf</li>
+<li>rsync - The location of the rsync binary.  Defaults to /usr/bin/rsync</li>
+<li>testRun - Defaults to 0 (false).  Set to 1 (true) to perform a dry run, logging out what would have happened.</li>
+</ul>
+<p><b>Desc:</b> The constructor of the RSyncBackup class.  One instance of the class can perform multiple backups.</p>
+<h3>timeToBackup</h3>
+<p><b>Args:</b></p>
+<ul>
+<li>backupInterval - The number of minutes to have ellapsed between backups.</li>
+</ul>
+<p><b>Desc:</b> Returns true if it's time to backup.  If the lastRunFile was set to None or does not exist then a warning is logged, but true is still returned.</p>
+<h3>backup</h3>
+<p><b>Args:</b></p>
+<ul>
+<li>source - The directory who's contents should be backed up.</li>
+<li>destination - The destination that the backup should be placed in.</li>
+<li>archive - Defaults to None.  The destination where old versions of files should be moved to.</li>
+<li>excludeList - Defaults to None.  A List of strings containing the list of dirs/files that should not be included in the backup (see rsync manual page for details on '--exclude')</li>
+</ul>
+<p><b>Desc:</b> Perform a backup.  This can be called multiple times with different arguments to backup different dirs to different destinations.  Returns true if successful.</p>
+<h3>trimArchives</h3>
+<p><b>Args:</b></p>
+<ul>
+<li>archiveDir - The directory where archives are kept.</li>
+<li>filter - Defaults to None.  A regular expression that allows only paths matching this regex to be trimmed.</li>
+<li>entriesToKeep - The number of archives to keep, defaults to 10.</li>
+<li>removeParentIfEmpty - Defaults to true.  Remove parent directories climbing the path if any of them are empty.  This is used to delete month and year directories that have been emptied.</li>
+</ul>
+<p><b>Desc:</b> WARNING: THIS DELETES FILES.  ALWAYS run with testRun set to true and ensure that the archiveDir contains only expendable data when developing your own backup script.  This method will remove old archives that number beyond entriesToKeep.  If in doubt just don't use it...</p>
+<h3>finish</h3>
+<p><b>Args:</b> None<br>
+<b>Desc:</b> If a lastRunFile was provided write out the last run time to it.</p>
+</div>
+	<div style="font-size: small">
+		
+	</div>
+	
+	<div id="footer">
+		<p title="PubTal is a template driven web site publisher.">Made with <a href="http://www.owlfish.com/software/PubTal/">PubTal</a> 3.1.0-dev</p>
+	</div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+title: RSyncBAckup API Documentation.
+subject: Documentation of how to use the RSyncBackup API.
+
+<h2>RSyncBackup</h2>
+<h3>__init__</h3>
+<b>Args:</b>
+
+<ul>
+<li>lastRunFile - The file used to record when the backup was last performed.  If you don't want to use this pass in None.  Defaults to /var/state/backupLastRun.lrf</li>
+<li>rsync - The location of the rsync binary.  Defaults to /usr/bin/rsync</li>
+<li>testRun - Defaults to 0 (false).  Set to 1 (true) to perform a dry run, logging out what would have happened.</li>
+</ul>
+
+<b>Desc:</b> The constructor of the RSyncBackup class.  One instance of the class can perform multiple backups.
+
+<h3>timeToBackup</h3>
+<b>Args:</b>
+
+<ul>
+<li>backupInterval - The number of minutes to have ellapsed between backups.</li>
+</ul>
+
+<b>Desc:</b> Returns true if it's time to backup.  If the lastRunFile was set to None or does not exist then a warning is logged, but true is still returned.
+
+<h3>backup</h3>
+<b>Args:</b>
+
+<ul>
+<li>source - The directory who's contents should be backed up.</li>
+<li>destination - The destination that the backup should be placed in.</li>
+<li>archive - Defaults to None.  The destination where old versions of files should be moved to.</li>
+<li>excludeList - Defaults to None.  A List of strings containing the list of dirs/files that should not be included in the backup (see rsync manual page for details on '--exclude')</li>
+</ul>
+
+<b>Desc:</b> Perform a backup.  This can be called multiple times with different arguments to backup different dirs to different destinations.  Returns true if successful.
+
+<h3>trimArchives</h3>
+<b>Args:</b>
+
+<ul>
+<li>archiveDir - The directory where archives are kept.</li>
+<li>filter - Defaults to None.  A regular expression that allows only paths matching this regex to be trimmed.</li>
+<li>entriesToKeep - The number of archives to keep, defaults to 10.</li>
+<li>removeParentIfEmpty - Defaults to true.  Remove parent directories climbing the path if any of them are empty.  This is used to delete month and year directories that have been emptied.</li>
+</ul>
+
+<b>Desc:</b> WARNING: THIS DELETES FILES.  ALWAYS run with testRun set to true and ensure that the archiveDir contains only expendable data when developing your own backup script.  This method will remove old archives that number beyond entriesToKeep.  If in doubt just don't use it...
+
+<h3>finish</h3>
+<b>Args:</b> None
+<b>Desc:</b> If a lastRunFile was provided write out the last run time to it.
+

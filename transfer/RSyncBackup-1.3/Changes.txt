@@ -1,0 +1,21 @@
+RSyncBackup (Version 1.3)
+-------------------------
+Version 1.3
+-----------
+Bug fixes:
+ - When trimming archives use os.remove on all paths that are not directories.
+   This allows special files such as sockets to be deleted.
+ 
+Version 1.2
+-----------
+New Features:
+ - Include API documentation and license.
+ 
+Version 1.1
+-----------
+Bug fixes:
+ - Enable deletion of symbolic links when trimming archives.
+
+Version 1.0
+-----------
+Initial release.
