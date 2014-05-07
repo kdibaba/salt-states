@@ -20,3 +20,5 @@ things i neglected:
     UnionFS needs to be setup for movies
     
     xbmc userdata only half worked. maybe due to version change 12->13
+    
+    Ensure my user owns the media folders that get mounted to.
