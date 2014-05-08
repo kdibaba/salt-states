@@ -6,6 +6,7 @@ include:
   - core.ssh.server
   - core.vim
   - core.byobu
+  - core.hdd
 
 /etc/default/grub:
   file.replace:
