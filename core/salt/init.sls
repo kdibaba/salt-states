@@ -8,7 +8,7 @@ https://github.com/johnnygaffey/salt-states:
     - target: /home/{{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}/salt-states
     - user: {{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}
 
-ssh://git@bitbucket.org/SGTJohnny/salt-pillar.git:
+https://SGTJohnny@bitbucket.org/SGTJohnny/salt-pillar.git:
   git.latest:
     - rev: master
     - target: /home/{{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}/salt-pillar
