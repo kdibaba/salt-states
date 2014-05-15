@@ -8,3 +8,5 @@ base:
     - torrent
     - systemtools
     - xbmc
+    - amd
+    - remote_control
