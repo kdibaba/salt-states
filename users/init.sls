@@ -34,5 +34,6 @@ ssh_keys:
   ssh_auth.present:
     - names:
       - {{ salt['pillar.get']('users:johnny:ssh:dev', 'nothing') }}
+      - {{ salt['pillar.get']('users:johnny:ssh:hots', 'nothing') }}
     - user: {{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}
 
