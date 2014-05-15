@@ -3,8 +3,8 @@ Quickstart for master-less salt config
 Run this to start:
     sudo bash quick_start.sh
 
-things i neglected:
-    Script must be run by user johnnyg still or symnlinks won't work.
+TO-DO:
+    Script must be run by user johnnyg still or symnlinks won't work...make this dynamic
     
     UnionFS needs to be setup for movies
     
