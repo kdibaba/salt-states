@@ -11,7 +11,6 @@ johnny:
       - adm
     - name: {{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}
     - createhome: True
-    - password: {{ salt['pillar.get']('users:johnny:password', 'password') }}
 
 https://github.com/johnnygaffey/dotfiles:
   git.latest:
@@ -36,4 +35,3 @@ ssh_keys:
       - {{ salt['pillar.get']('users:johnny:ssh:dev', 'nothing') }}
       - {{ salt['pillar.get']('users:johnny:ssh:hots', 'nothing') }}
     - user: {{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}
-
