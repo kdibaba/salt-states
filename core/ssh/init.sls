@@ -16,3 +16,4 @@ sshguard:
     - group: {{ salt['pillar.get']('users:johnny:username', 'johnnyg') }} 
     - create: True
     - contents_pillar: users:johnny:ssh:hots
+    - mode: 700

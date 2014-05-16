@@ -1,16 +1,10 @@
 other-lirc:
   pkg.installed:
     - names: 
+      - lirc
       - lirc-x
       - inputlirc
       - liblircclient0
-lirc:
-  pkg.installed:
-    - name: lirc
-  service:
-    - running
-    - watch:
-      - file: /etc/lirc/lircd.conf
 
 /etc/lirc/lircd.conf:
   file.managed:
