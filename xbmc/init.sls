@@ -17,7 +17,7 @@ create_xbmc_home:
     - rev: master
     - target: /home/{{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}/.xbmc/
     - user: {{ salt['pillar.get']('users:johnny:username', 'johnnyg') }} 
-    - identity: /home/{{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}/.ssh/id_rsa.pub
+    - identity: /home/{{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}/.ssh/id_rsa
     - watch:
       - file: create_xbmc_home
 
