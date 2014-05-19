@@ -1,7 +1,7 @@
 include:
-  - core.salt
   - core.ssh
   - core.pillar
+  - core.salt
   - core.aide
   - core.htop
   - core.mplayer
