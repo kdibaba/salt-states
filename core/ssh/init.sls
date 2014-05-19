@@ -12,7 +12,6 @@ sshguard:
 
 /home/{{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}/.ssh:
   file.directory:
-    - name: /home/{{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}/.xbmc
     - user: {{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}
     - group: {{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}
     - mode: 700
