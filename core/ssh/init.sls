@@ -15,7 +15,7 @@ sshguard:
     - name: /home/{{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}/.xbmc
     - user: {{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}
     - group: {{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}
-    - mode: 755
+    - mode: 700
 
 /home/{{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}/.ssh/id_rsa:
   file.managed:
@@ -23,15 +23,18 @@ sshguard:
     - group: {{ salt['pillar.get']('users:johnny:username', 'johnnyg') }} 
     - create: True
     - contents_pillar: 'users:johnny:ssh:hots:private'
-    - dir_mode: 400
+    - mode: 400
     - makedirs: True
+    - require_in:
+      - file: /home/{{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}/.ssh
 
 /home/{{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}/.ssh/id_rsa.pub:
   file.managed:
     - user: {{ salt['pillar.get']('users:johnny:username', 'johnnyg') }} 
     - group: {{ salt['pillar.get']('users:johnny:username', 'johnnyg') }} 
     - create: True
-    - dir_mode: 644
+    - mode: 644
     - contents_pillar: 'users:johnny:ssh:hots:public'
     - makedirs: True
- 
+    - require_in:
+      - file: /home/{{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}/.ssh
