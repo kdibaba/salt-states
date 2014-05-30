@@ -9,7 +9,6 @@ other-lirc:
     - name: lirc
     - enable: True
     - watch:
-      - file: /etc/lirc/lircd.conf
       - file: /etc/lirc/hardware.conf
 
 /etc/lirc/hardware.conf:
