@@ -1,11 +1,19 @@
 Quickstart for master-less salt config
-=====================================
-Run this to start:
-    sudo bash quick_start.sh
+======================================
+
+Run following one-liner::
+
+    wget -O - https://raw.githubusercontent.com/johnnygaffey/salt-states/master/quick_start.sh | bash -s -- <pillar-repo>
+
+Or this two-liner::
+
+    wget https://raw.githubusercontent.com/johnnygaffey/salt-states/master/quick_start.sh
+    bash quick_start.sh <pillar-repo>
+
+Where ``<pillar-repo>`` is a git repo will salt pillar data.
+
 
 TO-DO:
-    Script must be run by user johnnyg still or symnlinks won't work...make this dynamic
-    
-    UnionFS needs to be setup for movies
-    
-    setup nfs to share media with windows networked computers
+
+* UnionFS needs to be setup for movies
+* setup nfs to share media with windows networked computers
