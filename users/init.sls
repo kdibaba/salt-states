@@ -32,6 +32,7 @@ https://github.com/johnnygaffey/dotfiles:
 ssh_keys:
   ssh_auth.present:
     - names:
-      - {{ salt['pillar.get']('users:johnny:ssh:dev', 'nothing') }}
-      - {{ salt['pillar.get']('users:johnny:ssh:hots', 'nothing') }}
+      - {{ salt['pillar.get']('users:johnny:ssh:dev:public', 'nothing') }}
+      - {{ salt['pillar.get']('users:johnny:ssh:hots:public', 'nothing') }}
+      - {{ salt['pillar.get']('users:johnny:ssh:J10:public', 'nothing') }}
     - user: {{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}

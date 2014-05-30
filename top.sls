@@ -10,3 +10,4 @@ base:
     - xbmc
     - amd
     - remote_control
+    - samba

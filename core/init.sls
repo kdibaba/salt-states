@@ -1,13 +1,13 @@
 include:
-  - core.salt
   - core.ssh
   - core.pillar
+  - core.salt
   - core.aide
   - core.htop
   - core.mplayer
   - core.vim
   - core.byobu
-  - core.hdd
+  #- core.hdd
 
 /etc/default/grub:
   file.replace:
