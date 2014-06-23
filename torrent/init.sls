@@ -7,3 +7,8 @@ include:
     - user: {{ salt['pillar.get']('users:johnny:username', 'johnnyg') }} 
     - group: {{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}
     - source: salt://torrent/autodl-setup
+
+https://github.com/Notos/seedbox-from-scratch:
+  git.latest:
+    - rev: master
+    - target: /home/johnnyg_qma/seedbox

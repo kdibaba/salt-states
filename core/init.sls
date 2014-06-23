@@ -7,7 +7,6 @@ include:
   - core.mplayer
   - core.vim
   - core.byobu
-  - core.hdd
 
 /etc/default/grub:
   file.replace:

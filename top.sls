@@ -2,12 +2,16 @@ base:
   '*':
     - core
     - users
-    - desktop
     - devtools
+    - systemtools
+
+  'J5-HOTS':
+    - desktop
     - media
     - torrent
-    - systemtools
     - xbmc
     - amd
     - remote_control
     - samba
+    - hdd
+
