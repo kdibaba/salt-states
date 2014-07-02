@@ -35,4 +35,6 @@ ssh_keys:
       - {{ salt['pillar.get']('users:johnny:ssh:dev:public', 'nothing') }}
       - {{ salt['pillar.get']('users:johnny:ssh:hots:public', 'nothing') }}
       - {{ salt['pillar.get']('users:johnny:ssh:J10:public', 'nothing') }}
+      - {{ salt['pillar.get']('users:johnny:ssh:work:public', 'nothing') }}
+      - {{ salt['pillar.get']('users:johnny:ssh:seedbox:public', 'nothing') }}
     - user: {{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}
