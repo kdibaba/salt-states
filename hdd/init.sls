@@ -47,14 +47,16 @@
     - persist: True
 
 /mnt/TV-Shows:
+  mount.mounted:
+    - mkmnt: True
+    - device: UUID={{ salt['pillar.get']('hdd:tv_shows:uid', '1') }} 
+    - fstype: xfs
+    - persist: True
+    - opts:
+      - noatime
+      - nodiratime
   file.directory:
     - user: {{ salt['pillar.get']('users:johnny:username', 'johnnyg') }} 
     - group: {{ salt['pillar.get']('users:johnny:username', 'johnnyg') }} 
-  mount.mounted:
-    - device: UUID={{ salt['pillar.get']('hdd:movies_one:uid', '1') }} 
-    - fstype: xfs
-    - opts:
-      - uid={{ salt['pillar.get']('users:johnny:username', 'johnnyg') }} 
-      - gid={{ salt['pillar.get']('users:johnny:username', 'johnnyg') }} 
-    - persist: True
-
+    - require:
+      - mount: /mnt/TV-Shows
