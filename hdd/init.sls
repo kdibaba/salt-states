@@ -73,3 +73,16 @@
     - opts:
       - noatime
       - nodiratime
+
+/mnt/temp:
+  file.directory:
+    - user: {{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}
+    - group: {{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}
+  mount.mounted:
+    - mkmnt: True
+    - device: UUID={{ salt['pillar.get']('hdd:temp:uid', '1') }}
+    - fstype: xfs
+    - persist: True
+    - opts:
+      - noatime
+      - nodiratime
