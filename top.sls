@@ -14,4 +14,5 @@ base:
     - remote_control
     - samba
     - hdd
+    - emulation
 

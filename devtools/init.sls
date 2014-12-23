@@ -22,6 +22,8 @@ python-tools:
       - {{ salt['pillar.get']('pkgs:virtualenv', 'virtualenv') }}
       - {{ salt['pillar.get']('pkgs:tox', 'tox') }}
       - {{ salt['pillar.get']('pkgs:pip', 'pip') }}
+      - automake
+      - libtool
 
 pip_packages:
   pip.installed:

@@ -1,27 +1,3 @@
-/mnt/Movies_one:
-  file.directory:
-    - user: {{ salt['pillar.get']('users:johnny:username', 'johnnyg') }} 
-    - group: {{ salt['pillar.get']('users:johnny:username', 'johnnyg') }} 
-  mount.mounted:
-    - device: UUID={{ salt['pillar.get']('hdd:movies_one:uid', '1') }} 
-    - fstype: ntfs-3g
-    - opts:
-      - uid={{ salt['pillar.get']('users:johnny:username', 'johnnyg') }} 
-      - gid={{ salt['pillar.get']('users:johnny:username', 'johnnyg') }} 
-    - persist: True
-
-/mnt/Movies_two:
-  file.directory:
-    - user: {{ salt['pillar.get']('users:johnny:username', 'johnnyg') }} 
-    - group: {{ salt['pillar.get']('users:johnny:username', 'johnnyg') }} 
-  mount.mounted:
-    - device: UUID={{ salt['pillar.get']('hdd:movies_two:uid', '1') }} 
-    - fstype: ntfs-3g
-    - opts:
-      - uid={{ salt['pillar.get']('users:johnny:username', 'johnnyg') }} 
-      - gid={{ salt['pillar.get']('users:johnny:username', 'johnnyg') }} 
-    - persist: True
-
 /mnt/Anime:
   file.directory:
     - user: {{ salt['pillar.get']('users:johnny:username', 'johnnyg') }} 
@@ -47,6 +23,9 @@
     - persist: True
 
 /mnt/TV-Shows:
+  file.directory:
+    - user: {{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}
+    - group: {{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}
   mount.mounted:
     - mkmnt: True
     - device: UUID={{ salt['pillar.get']('hdd:tv_shows:uid', '1') }} 
@@ -55,11 +34,6 @@
     - opts:
       - noatime
       - nodiratime
-  file.directory:
-    - user: {{ salt['pillar.get']('users:johnny:username', 'johnnyg') }} 
-    - group: {{ salt['pillar.get']('users:johnny:username', 'johnnyg') }} 
-    - require:
-      - mount: /mnt/TV-Shows
 
 /mnt/Movies:
   file.directory:
@@ -81,6 +55,32 @@
   mount.mounted:
     - mkmnt: True
     - device: UUID={{ salt['pillar.get']('hdd:temp:uid', '1') }}
+    - fstype: xfs
+    - persist: True
+    - opts:
+      - noatime
+      - nodiratime
+
+/mnt/Anime-TV:
+  file.directory:
+    - user: {{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}
+    - group: {{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}
+  mount.mounted:
+    - mkmnt: True
+    - device: UUID={{ salt['pillar.get']('hdd:anime_tv:uid', '1') }}
+    - fstype: xfs
+    - persist: True
+    - opts:
+      - noatime
+      - nodiratime
+
+/mnt/Anime-Movies:
+  file.directory:
+    - user: {{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}
+    - group: {{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}
+  mount.mounted:
+    - mkmnt: True
+    - device: UUID={{ salt['pillar.get']('hdd:anime_movies:uid', '1') }}
     - fstype: xfs
     - persist: True
     - opts:
