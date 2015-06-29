@@ -26,4 +26,19 @@ xfs_mkfs:
       - raid: media
       - cmd: xfs_mkfs
 
+# packages used for making sure server can email me when raid is in trouble
+smtp_ubuntu:
+  pkg.installed:
+    - names:
+      - postfix
+      - mailutils
+      - libsasl2-2
+      - ca-certificates
+      - libsasl2-modules
+
+/etc/postfix/main.cf:
+  file.managed:
+  - source: salt://media/storage/main.cf
+  - require:
+    - pkg: postfix
 
