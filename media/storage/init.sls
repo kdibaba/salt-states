@@ -1,4 +1,4 @@
-media:
+'/dev/md/J5-HOTS:0':
   raid.present:
     - level: 6
     - devices:
@@ -9,7 +9,7 @@ media:
 xfs_mkfs:
   cmd.run:
     - name: mkfs.xfs {{ raid['mount_dev'] }} -L {{ raid['label'] }}
-    - unless: 'test "$(blkid {{ raid['mount_dev'] }} -s TYPE -o value)" == xfs"'
+    - unless: 'test "$(blkid {{ raid['mount_dev'] }} -s TYPE -o value)" == "xfs"'
     - require:
       - raid: media
 
@@ -27,6 +27,7 @@ xfs_mkfs:
       - cmd: xfs_mkfs
 
 # packages used for making sure server can email me when raid is in trouble
+#https://rtcamp.com/tutorials/linux/ubuntu-postfix-gmail-smtp/
 smtp_ubuntu:
   pkg.installed:
     - names:
