@@ -13,6 +13,6 @@ base:
     - amd
     - remote_control
     - samba
-    - hdd
+    #- hdd
     - emulation
 

@@ -2,9 +2,10 @@
   raid.present:
     - level: 6
     - devices:
-      {% for device in raid['devices'] %}
+      {% for device in salt['pillar.get']('storage:raid:devices', '')%}
       - {{ device }}
       {% endfor %}
+
 
 xfs_mkfs:
   cmd.run:
