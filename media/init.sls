@@ -5,3 +5,4 @@ include:
   - media.storage
   #- media.gnome
   - media.solaar
+  - media.plex
