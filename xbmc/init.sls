@@ -1,14 +1,14 @@
-xbmc:
+kodi:
   pkg.installed:
-    - name: xbmc
+    - name: kodi
   pkgrepo.managed:
     - ppa: team-xbmc/ppa
     - require_in:
-      - pkg: xbmc
+      - pkg: kodi 
 
 create_xbmc_home:
   file.directory:
-    - name: /home/{{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}/.xbmc
+    - name: /home/{{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}/.kodi
     - user: {{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}
     - group: {{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}
     - mode: 755

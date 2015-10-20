@@ -49,8 +49,8 @@ git clone $pillar_repo $HOME/salt-pillar || die "Failed to clone salt-pillar."
 
 wget -O - http://bootstrap.saltstack.org | sudo sh
 
-sudo ln -s $HOME/salt-states /srv/salt
-sudo ln -s $HOME/salt-pillar /srv/pillar
+sudo ln -s $HOME/projects/salt-states /srv/salt
+sudo ln -s $HOME/projects/salt-pillar /srv/pillar
 
 sudo salt-call --local state.highstate
 
