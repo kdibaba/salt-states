@@ -1,31 +1,32 @@
-'/dev/md/J5-HOTS:0':
+{% for name, raid in pillar.get('storage', {})|dictsort %}
+{{ name }}:
   raid.present:
-    - level: 6
+    - level: {{ raid['level'] }}
     - devices:
-      {% for device in salt['pillar.get']('storage:raid:devices', '')%}
-      - {{ device }}
+      {% for device in raid['devices'] %}
+      - {{ device}}
       {% endfor %}
 
-
-xfs_mkfs:
+{{ name }}_mkfs:
   cmd.run:
-    - name: mkfs.xfs {{ raid['mount_dev'] }} -L {{ raid['label'] }}
-    - unless: 'test "$(blkid {{ raid['mount_dev'] }} -s TYPE -o value)" == "xfs"'
+    - name: mkfs.{{ raid['fstype'] }} {{ raid['mount_dev'] }} -L {{ raid['label'] }}
+    - unless: 'test "$(blkid {{ raid['mount_dev'] }} -s TYPE -o value)" == "{{ raid['fstype'] }}"'
     - require:
-      - raid: media
+      - raid: {{ name }}
 
 {{ raid['mount_point'] }}:
   mount.mounted:
     - device: {{ raid['mount_dev'] }}
-    - fstype: xfs
+    - fstype: {{ raid['fstype'] }}
     - mkmnt: True
     - opts:
       {% for opt in raid['mount_opts'] %}
       - {{ opt }}
       {% endfor %}
     - require:
-      - raid: media
-      - cmd: xfs_mkfs
+      - raid: {{ name }}
+      - cmd: {{ name }}_mkfs
+{% endfor %}
 
 # packages used for making sure server can email me when raid is in trouble
 #https://rtcamp.com/tutorials/linux/ubuntu-postfix-gmail-smtp/
