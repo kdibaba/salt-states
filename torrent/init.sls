@@ -11,4 +11,4 @@ include:
 https://github.com/Notos/seedbox-from-scratch:
   git.latest:
     - rev: master
-    - target: /home/johnnyg_qma/seedbox
+    - target: /home/johnnyg/seedbox

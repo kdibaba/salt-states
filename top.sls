@@ -8,7 +8,7 @@ base:
   'J5-HOTS':
     - desktop
     - media
-    - torrent
+    #- torrent
     - xbmc
     - amd
     - remote_control
