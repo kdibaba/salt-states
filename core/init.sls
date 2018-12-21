@@ -2,7 +2,6 @@ include:
   - core.ssh
   - core.pillar
   - core.salt
-  - core.aide
   - core.htop
   - core.mplayer
   - core.vim

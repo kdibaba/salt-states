@@ -1,7 +1,7 @@
-
 systemtools:
   pkg.installed:
     - names:
+      - {{ salt['pillar.get']('pkgs:aide', 'aide') }}
       - {{ salt['pillar.get']('pkgs:screen', 'screen') }}
       - {{ salt['pillar.get']('pkgs:tmux', 'tmux') }}
       - {{ salt['pillar.get']('pkgs:dos2unix', 'dos2unix') }}
