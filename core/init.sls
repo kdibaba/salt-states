@@ -3,9 +3,9 @@ include:
   - core.pillar
   - core.salt
   - core.htop
-  - core.mplayer
   - core.vim
   - core.byobu
+  - core.dotfiles
 
 /etc/default/grub:
   file.replace:
@@ -17,3 +17,10 @@ update-grub:
     - name: update-grub
     - watch:
       - file: /etc/default/grub
+
+create_projects_dir:
+  file.directory:
+    - name: /home/{{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}/projects
+    - user: {{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}
+    - group: {{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}
+    - mode: 755
