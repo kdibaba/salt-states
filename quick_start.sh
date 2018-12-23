@@ -44,8 +44,8 @@ pillar_repo="$1"
 
 pushd $(dirname $0) &> /dev/null
 
-git clone https://github.com/johnnygaffey/salt-states.git $HOME/salt-states || die "Failed to clone salt-states."
-git clone $pillar_repo $HOME/salt-pillar || die "Failed to clone salt-pillar."
+git clone https://github.com/johnnygaffey/salt-states.git $HOME/projects/salt-states || die "Failed to clone salt-states."
+git clone $pillar_repo $HOME/projects/salt-pillar || die "Failed to clone salt-pillar."
 
 wget -O - http://bootstrap.saltstack.org | sudo sh
 
