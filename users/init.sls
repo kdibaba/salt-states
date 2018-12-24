@@ -37,6 +37,20 @@ https://github.com/johnnygaffey/dotfiles:
     - watch:
       - git: https://github.com/johnnygaffey/dotfiles
 
+dotfiles_dir:
+  file.exists:
+  - name: /home/{{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}/projects/dotfiles
+
+/home/{{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}/projects/dotfiles/.git/config:
+  file.managed:
+    - source: salt://users/config
+    - user: {{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}
+    - group: {{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}
+    - mode: 644
+    - require:
+      - file: dotfiles_dir
+
+
 /home/{{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}/.ssh:
   file.directory:
     - user: {{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}
