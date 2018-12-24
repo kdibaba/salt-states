@@ -4,7 +4,7 @@
 	bare = false
 	logallrefupdates = true
 [remote "origin"]
-	url = ssh://git@bitbucket.org/SGTJohnny/salt-pillar.git
+	url = ssh://git@bitbucket.org/ALazyDeveloper/salt-pillar.git
 	fetch = +refs/heads/*:refs/remotes/origin/*
 [branch "master"]
 	remote = origin

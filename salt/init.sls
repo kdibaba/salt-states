@@ -1,6 +1,9 @@
+include:
+  - salt.pillar
+
 /etc/salt/minion:
   file.managed:
-    - source: salt://core/salt/minion
+    - source: salt://salt/minion
 
 https://github.com/johnnygaffey/salt-states:
   git.latest:

@@ -13,7 +13,7 @@ create_xbmc_home:
     - group: {{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}
     - mode: 755
   git.latest:
-    - name: git@bitbucket.org:SGTJohnny/xbmc.userdata.git
+    - name: git@bitbucket.org:ALazyDeveloper/xbmc.userdata.git
     - rev: master
     - target: /home/{{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}/.xbmc/
     - user: {{ salt['pillar.get']('users:johnny:username', 'johnnyg') }} 

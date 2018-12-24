@@ -1,17 +1,18 @@
 base:
   '*':
-    - core
     - users
+    - salt
     - devtools
     - systemtools
 
   'J5-HOTS':
-    - desktop
     - media
-    #- torrent
+    - seedbox
     - xbmc
     - amd
     - remote_control
     - samba
     - emulation
 
+    # TODO: old, get rid of?
+    #- desktop
