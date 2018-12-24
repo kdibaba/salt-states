@@ -43,7 +43,7 @@ if [ $# -ne 1 ]; then echo "Need pillar repo"; exit 1; fi
 pillar_repo="$1"
 
 pushd $(dirname $0) &> /dev/null
-
+mkdir $HOME/projects
 git clone https://github.com/johnnygaffey/salt-states.git $HOME/projects/salt-states || die "Failed to clone salt-states."
 git clone $pillar_repo $HOME/projects/salt-pillar || die "Failed to clone salt-pillar."
 
