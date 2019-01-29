@@ -1,5 +1,6 @@
 include:
   - seedbox.rtorrent
+  - seedbox.rutorrent
 
 
 /home/{{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}/projects/seedbox/:
