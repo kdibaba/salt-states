@@ -3,7 +3,8 @@
     - user: www-data
     - group: www-data
   archive.extracted:
-    - source: salt://seedbox/rutorrent/ruTorrent-3.8.tar.gz
+    # NEED TO change name of output folder to "rutorrent"
+    - source: salt://seedbox/rutorrent/rutorrent-3.8.tar.gz
     - user: www-data
     - group: www-data
 
@@ -21,7 +22,7 @@ rutorrent:
     - source: salt://seedbox/rutorrent/ru_torrent_nginx.conf
     - user: root
 
-/var/www/ruTorrent-3.8/.htpasswd:
+/var/www/rutorrent/.htpasswd:
   file.managed:
     - source: salt://seedbox/rutorrent/.htpasswd
     - user: www-data
