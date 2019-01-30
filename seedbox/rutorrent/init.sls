@@ -16,6 +16,7 @@ rutorrent:
       - php-geoip
       - nginx
       - apache2-utils
+      - byobu
 
 /etc/nginx/sites-available/default:
   file.managed:
@@ -25,5 +26,16 @@ rutorrent:
 /var/www/rutorrent/.htpasswd:
   file.managed:
     - source: salt://seedbox/rutorrent/.htpasswd
+    - user: www-data
+    - group: www-data
+
+www-data:
+  group.present:
+    - addusers:
+      - {{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}
+
+/var/www/rutorrent/conf/config.php:
+  file.managed:
+    - source: salt://seedbox/rutorrent/config.php
     - user: www-data
     - group: www-data

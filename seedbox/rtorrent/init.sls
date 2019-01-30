@@ -8,12 +8,14 @@ rtorrent_deps:
       - unrar
       - mediainfo
       - curl
-  #  cmd.run:
-    #    - name: screen -d -m -S rtorrent rtorrent
-    #- user: johnnyg
-    #- unless: test $(screen -list | grep 'rtorrent' -c) -gt 0
-  #- require:
-    #   - pkg: screen
+
+start_rtorrent:
+    cmd.run:
+      - name: screen -d -m -S rtorrent rtorrent
+      - user: {{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}
+      - unless: test $(screen -list | grep 'rtorrent' -c) -gt 0
+      - require:
+        - pkg: screen
 
 /home/{{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}/downloads/:
   file.directory:
