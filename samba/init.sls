@@ -7,3 +7,13 @@ samba:
     - source: salt://samba/smb.conf
     - require:
       - pkg: samba
+
+smbd:
+  service.running:
+    - enable: True
+    - reload: True
+    - watch:
+      - file: /etc/samba/smb.conf
+    - require:
+      - pkg: samba
+
