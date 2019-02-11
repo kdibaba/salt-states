@@ -25,7 +25,8 @@ rutorrent:
 
 /var/www/rutorrent/.htpasswd:
   file.managed:
-    - source: salt://seedbox/rutorrent/.htpasswd
+    - create: True
+    - contents_pillar: 'seedbox:rutorrent:htpasswd'
     - user: www-data
     - group: www-data
 
@@ -39,3 +40,13 @@ www-data:
     - source: salt://seedbox/rutorrent/config.php
     - user: www-data
     - group: www-data
+
+
+nginx:
+  service.running:
+    - enable: True
+    - reload: True
+    - watch:
+      - file: /etc/nginx/sites-available/default
+    - require:
+      - pkg: nginx
