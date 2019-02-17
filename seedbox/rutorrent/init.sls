@@ -11,8 +11,8 @@
 rutorrent:
   pkg.installed:
     - names:
-      - php7.2-fpm
-      - php7.2-cli
+      - php7.0-fpm
+      - php7.0-cli
       - php-geoip
       - nginx
       - apache2-utils
