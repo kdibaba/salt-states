@@ -8,7 +8,7 @@ include:
     - user: {{ salt['pillar.get']('users:johnny:username', 'qma') }}
     - group: {{ salt['pillar.get']('users:johnny:username', 'qma') }}
 
-/home/{{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}/projects/seedbox/autodl-setup:
+/home/{{ salt['pillar.get']('users:johnny:username', 'qma') }}/projects/seedbox/autodl-setup:
   file.managed:
     - user: {{ salt['pillar.get']('users:johnny:username', 'qma') }}
     - group: {{ salt['pillar.get']('users:johnny:username', 'qma') }}
