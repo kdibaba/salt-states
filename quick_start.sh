@@ -54,6 +54,6 @@ wget -O - http://bootstrap.saltstack.org | sudo sh
 sudo ln -s $HOME/projects/salt-states /srv/salt
 sudo ln -s $HOME/projects/salt-pillar /srv/pillar
 
-sudo salt-call --local state.highstate
+#sudo salt-call --local state.highstate
 
 popd &> /dev/null
