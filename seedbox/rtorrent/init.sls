@@ -12,7 +12,7 @@ rtorrent_deps:
 start_rtorrent:
     cmd.run:
       - name: screen -d -m -S rtorrent rtorrent
-      - user: {{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}
+      - runas: {{ salt['pillar.get']('users:johnny:username', 'johnnyg') }}
       - unless: test $(screen -list | grep 'rtorrent' -c) -gt 0
       - require:
         - pkg: screen
